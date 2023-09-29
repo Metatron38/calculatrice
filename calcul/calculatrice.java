@@ -108,23 +108,23 @@ public class calculatrice extends JFrame {
   //M�thode permettant d'effectuer un calcul selon l'op�rateur s�lectionn�
   public void calcul(){
     if(operateur.equals("+")){
-      chiffre1 = chiffre1 + 
+      chiffre1 = chiffre1 +
             Double.valueOf(ecran.getText()).doubleValue();
       ecran.setText(String.valueOf(chiffre1));
     }
     if(operateur.equals("-")){
-      chiffre1 = chiffre1 - 
+      chiffre1 = chiffre1 -
             Double.valueOf(ecran.getText()).doubleValue();
       ecran.setText(String.valueOf(chiffre1));
-    }          
+    }
     if(operateur.equals("*")){
-      chiffre1 = chiffre1 * 
+      chiffre1 = chiffre1 *
             Double.valueOf(ecran.getText()).doubleValue();
       ecran.setText(String.valueOf(chiffre1));
-    }     
+    }
     if(operateur.equals("/")){
       try{
-        chiffre1 = chiffre1 / 
+        chiffre1 = chiffre1 /
               Double.valueOf(ecran.getText()).doubleValue();
         ecran.setText(String.valueOf(chiffre1));
       } catch(ArithmeticException e) {
@@ -132,9 +132,6 @@ public class calculatrice extends JFrame {
       }
     }
   }
-  
-
-  
 
   //Listener utilis� pour les chiffres
   //Permet de stocker les chiffres et de les afficher

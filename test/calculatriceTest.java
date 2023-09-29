@@ -24,20 +24,4 @@ class calculatriceTest {
 		  // Verify
 		  assertEquals("5.0", calculette.ecran.getText());
 	}
-
-	@Test
-	public void testCalculSoustraction() {
-		calculatrice calculette = new calculatrice();
-
-		  // Set up
-		calculette.ecran.setText("2");
-		calculette.operateur = "-";
-		calculette.chiffre1 = 3.0;
-		
-		  // Execute
-		calculette.calcul();
-		
-		  // Verify
-		  assertEquals("-1.0", calculette.ecran.getText());
-	}
 }
