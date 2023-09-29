@@ -1,3 +1,5 @@
+package calcul;
+
 
 import java.awt.*;
 import java.awt.event.*;
@@ -5,16 +7,16 @@ import javax.swing.*;
 
   
 public class calculatrice extends JFrame {
-  private JPanel container = new JPanel();
+  public JPanel container = new JPanel();
   
   String[] tableau = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "0","=", "effacer", "+", "-", "*", "/"};
 
   JButton[] tableau_bouton = new JButton[16];
-  private JLabel ecran = new JLabel();
+  public JLabel ecran = new JLabel();
   
-  private double chiffre1; 
-  private boolean clicOperateur = false, update = false;
-  private String operateur = "";
+  public double chiffre1; 
+  public boolean clicOperateur = false, update = false;
+  public String operateur = "";
   
   public calculatrice(){
     this.setSize(300,250);
@@ -24,8 +26,11 @@ public class calculatrice extends JFrame {
     initialiserInterface();
 	this.setContentPane(container);
 	this.setVisible(true);
+	
+
   }
-      
+ 
+
   private void initialiserInterface(){
     
 	  Font police = new Font("Arial", Font.BOLD, 20);
@@ -41,15 +46,15 @@ public class calculatrice extends JFrame {
 	    JPanel panEcran = new JPanel();
 	    panEcran.setPreferredSize(new Dimension(220, 30));
 
-    //On parcourt le tableau initialisé
-    //afin de créer nos boutons
+    //On parcourt le tableau initialisï¿½
+    //afin de crï¿½er nos boutons
     for(int i = 0; i < 16; i++){
     	tableau_bouton[i] = new JButton(tableau[i]);
        
       switch(i){
-        //Pour chaque élément situé à la fin du tableau
+        //Pour chaque ï¿½lï¿½ment situï¿½ ï¿½ la fin du tableau
         //et qui n'est pas un chiffre
-        //on définit le comportement à avoir grâce à un listener
+        //on dï¿½finit le comportement ï¿½ avoir grï¿½ce ï¿½ un listener
         case 10 :
         	tableau_bouton[i].addActionListener(new Egalite());
           chiffre.add(tableau_bouton[i]);
@@ -80,7 +85,7 @@ public class calculatrice extends JFrame {
           operateur.add(tableau_bouton[i]);
           break;
         default :
-          //Par défaut, ce sont les premiers éléments du tableau
+          //Par dï¿½faut, ce sont les premiers ï¿½lï¿½ments du tableau
           //donc des chiffres, on affecte alors le bon listener
           chiffre.add(tableau_bouton[i]);
           tableau_bouton[i].addActionListener(new AfficherChiffre());
@@ -93,10 +98,15 @@ public class calculatrice extends JFrame {
     container.add(panEcran, BorderLayout.CENTER);
     container.add(chiffre, BorderLayout.NORTH);
     container.add(operateur, BorderLayout.EAST);
+    
+    //generate random number in the screen
+    //add some logic
+    
+    
   }
 
-  //Méthode permettant d'effectuer un calcul selon l'opérateur sélectionné
-  private void calcul(){
+  //Mï¿½thode permettant d'effectuer un calcul selon l'opï¿½rateur sï¿½lectionnï¿½
+  public void calcul(){
     if(operateur.equals("+")){
       chiffre1 = chiffre1 + 
             Double.valueOf(ecran.getText()).doubleValue();
@@ -122,11 +132,13 @@ public class calculatrice extends JFrame {
       }
     }
   }
+  
 
+  
 
-  //Listener utilisé pour les chiffres
+  //Listener utilisï¿½ pour les chiffres
   //Permet de stocker les chiffres et de les afficher
-  class AfficherChiffre implements ActionListener {
+  public class AfficherChiffre implements ActionListener {
     public void actionPerformed(ActionEvent e){
       //On affiche le chiffre additionnel dans le label
       String str = ((JButton)e.getSource()).getText();
@@ -141,17 +153,24 @@ public class calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton =
-  class Egalite implements ActionListener {
+  
+  /**
+ * On affiche le chiffre
+ */
+public class Egalite implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
+      //
       calcul();
       update = true;
       clicOperateur = false;
     }
   }
 
-  //Listener affecté au bouton +
-  class Addition implements ActionListener {
+  //Listener affectï¿½ au bouton +
+  /**
+ *   
+ */
+public class Addition implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
         calcul();
@@ -166,8 +185,11 @@ public class calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton -
-  class Soustraction implements ActionListener {
+  //Listener affectï¿½ au bouton -
+  /**
+ *  	
+ */
+public class Soustraction implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
         calcul();
@@ -182,8 +204,8 @@ public class calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton *
-  class Multiplication implements ActionListener {
+  //Listener affectï¿½ au bouton *
+public class Multiplication implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
         calcul();
@@ -198,8 +220,8 @@ public class calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton /
-  class Division implements ActionListener {
+  //Listener affectï¿½ au bouton /
+public class Division implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       if(clicOperateur){
         calcul();
@@ -214,8 +236,8 @@ public class calculatrice extends JFrame {
     }
   }
 
-  //Listener affecté au bouton de remise à zéro
-  class Annulation implements ActionListener {
+  //Listener affectï¿½ au bouton de remise ï¿½ zï¿½ro
+public  class Annulation implements ActionListener {
     public void actionPerformed(ActionEvent arg0){
       clicOperateur = false;
       update = true;
